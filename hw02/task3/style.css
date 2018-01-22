@@ -1,0 +1,47 @@
+/*CSS Stylesheet for task3.html*/
+
+body{
+	background-color: #7C7F83;
+}
+
+.header{
+    background-color: #100C08;
+    color: #FFFFFF;
+    padding: 20px;
+    text-align: center;
+}
+
+.menu{
+    background-color: #4A535C;
+    float: left;
+    width: 33%;    
+}
+
+.menu ol{
+    margin-right: 30%;
+    padding: 10px;
+}
+
+.menu li{
+    margin-bottom: 5px;
+    padding: 20px;
+    background-color: #2D2336;
+    color: #FFFFFF;
+    display: block;
+}
+
+/*Clearfix code referred from "www.w3schools.com/css"*/
+.clearfix::after {
+    content: "";
+    display: table;
+}
+
+.content{
+	float: right;
+	background-color: #7C7F83;
+	width: 67%;
+}
+
+.hidden{
+	display: none;
+}
