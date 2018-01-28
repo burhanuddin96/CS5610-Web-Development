@@ -1,0 +1,11 @@
+<style>
+    .gname{text-align: center;}
+</style>
+<div class="row">
+    <div class="col">
+        <h1 class="gname">Memory Game</h1>
+        <div id="root">
+            <p>React app not loaded...</p>
+        </div>
+    </div>
+</div>
