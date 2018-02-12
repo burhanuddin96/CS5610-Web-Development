@@ -2,6 +2,7 @@ defmodule CalcTest do
   use ExUnit.Case
   doctest Calc
 
+  #Following tests make sure all other helper functions are tested.
   test "eval function - exp without spaces" do
     assert Calc.eval("(9*5)-10+(5*2)") == 45
   end
