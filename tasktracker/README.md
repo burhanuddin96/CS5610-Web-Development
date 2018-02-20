@@ -1,15 +1,6 @@
 # Tasktracker
 
-To start your Phoenix server:
-
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+Visit task1.the-bsweb.com
 
 ## Learn more
 
@@ -18,3 +9,14 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
+  
+  
+Application Functionalities:
+1. Create new users and edit existing ones.
+2. LogIn and LogOut functionalities provided.
+3. Create new tasks and edit existing ones.
+4. Once a task is marked as completed, it cannot be reverted back to incomplete. Changing time spent on a task after it has been marked completed is not allowed.
+5. User is given a choice to input number of hours and minutes spent on current task.
+6. User can only input minutes in 15min increments.
+7. User is redirected to his feed page after logging in successfully.
+8. Task feed page is personalized for each user showing only the tasks that are assigned to the current user.
