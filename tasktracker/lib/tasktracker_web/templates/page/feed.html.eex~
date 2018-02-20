@@ -1,0 +1,28 @@
+<style>.new {float: right}</style>
+<div class="new"><%= link "New Task", to: task_path(@conn, :new), class: "btn btn-primary" %></div>
+<h2> Your assigned tasks are listed below:</h2>
+
+<%= Enum.map @tasks, fn task -> %>
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title"><%= task.user.name %></h6>
+        <p><%= task.name %></p>
+        <p><%= task.desc %></p>
+        <p><b>Time Spent:</b> <%=task.timeHRS%> hrs <%=task.timeMIN%> min</p>
+        <p><strong>
+    		<%= if(task.completed == true) do %>
+    		Task is completed.
+    		<% else %>
+    		Task is not yet completed.
+    		<% end %>
+    	</strong></p>  
+    	<span><%= link "Show Task", to: task_path(@conn, :show, task), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit Task", to: task_path(@conn, :edit, task), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete Task", to: task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,45 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <b> Task Name: </b>
+    <%= text_input f, :name %>
+    <%= error_tag f, :name %>
+  </div>
+
+  <div class="form-group">
+    <b> Task Description: </b>
+    <%= textarea f, :desc, class: "form-control" %>
+    <%= error_tag f, :desc %>
+  </div>
+  
+  <div class="form-group">
+    <b>Assigned To:</b>
+    <%= text_input f, :user_id %>
+    <a href="http://localhost:4000/users">View Users List</a>
+    <%= error_tag f, :user_id %>
+  </div>
+
+  <div class="form-group">
+    <b>Time Spent:</b> 
+    <%= number_input f, :timeHRS %>hours
+    <%= error_tag f, :timeHRS %>
+    <%= select f, :timeMIN, [0,15,30,45] %>minutes
+    <%= error_tag f, :timeMIN %>
+
+  </div>
+
+  <div class="form-group">
+    <b> Task Completed? </b>
+    <%= checkbox f, :completed %>
+    <%= error_tag f, :completed %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

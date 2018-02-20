@@ -1,0 +1,37 @@
+<h2>Task Information</h2>
+
+<ul>
+
+  <li>
+    <strong>Task Name:</strong>
+    <%= @task.name %>
+  </li>
+
+  <li>
+    <strong>Task Description:</strong>
+    <%= @task.desc %>
+  </li>
+	
+  <li>
+    <strong>Task Assigned To:</strong>
+    <%= @task.user.name %>
+  </li>
+
+  <li>
+    <strong>Time Spent:</strong>
+    <%= @task.timeHRS %>Hours <%= @task.timeMIN %>Minutes
+  </li>
+
+  <li>
+    <strong>
+    <%= if(@task.completed == true) do %>
+    Task is completed.
+    <% else %>
+    Task is not yet completed.
+    <% end %>
+    </strong>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: task_path(@conn, :edit, @task) %></span>
