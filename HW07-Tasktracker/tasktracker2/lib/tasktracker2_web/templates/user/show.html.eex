@@ -1,0 +1,35 @@
+<h2>Show User</h2>
+
+<ul>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </li>
+
+  <li>
+    <strong>Manager:</strong>
+    <%= if @user.manager do %>
+      	Yes
+    <% else %>
+    	No
+    <% end %>
+  </li>
+  
+  <li>
+    <strong>Managed By:</strong>
+    <%=if @user.manager_id == nil do %>
+    None
+    <% else %>
+    	<%= @user.user.name %>
+    <% end %>    
+  </li>
+  
+</ul>
+
+<span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>

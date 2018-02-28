@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col">
+        <h2> Task Tracker </h2>
+        <%= form_tag("/session", method: :post) do %>
+        <div class="form-group">
+        	Email: <input type="email" name="email" placeholder="user@example.com"/>
+        </div>
+        <div class="form-group">
+        	<button class="btn btn-primary">Login</button>
+      		<p class="message">Not registered? 
+      		<%= link "Register", to: page_path(@conn, :register) %></p>
+        </div>
+        <% end %>
+    </div>
+</div>

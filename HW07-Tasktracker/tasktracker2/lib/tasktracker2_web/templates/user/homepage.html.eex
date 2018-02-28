@@ -1,0 +1,112 @@
+<style>.new {float: right}</style>
+<%= if @user.manager do %>
+<div class="new"><%= link "New Task", to: task_path(@conn, :new), class: "btn btn-primary" %></div>
+<strong><h1>Report</h1></strong>
+	<table class="table">
+  <thead>
+    <tr>
+			<th>Name</th>
+      <th>Description</th>
+      <th>Assigned to</th>
+      <th>Completed?</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+	<%= for task <- @tasks do %>
+		<%= for user <- @underlings do %>
+		<%= if user.id == task.user_id do %> 
+			<script>console.log(<%= user.id == task.user_id %>)</script>
+			<tr>
+      <td><%= task.name %></td>
+      <td><%= task.desc %></td>
+      <td><%= task.user.name %></td>
+      <td><%= if(task.completed == true) do %>
+    	YES
+    	<% else %>
+    	NO
+    	<% end %></td>
+    	<td><%= link "Edit Task", to: task_path(@conn, :edit, task), class: "btn btn-primary btn-xs" %></td>
+    <% end %>
+   <% end %>
+`<% end %>
+			
+  
+<% else %>
+ <br>
+  <div id="hp1" class="hp1">
+  	<div class="new"><button class="btn btn-secondary" onclick="hide_pplDiv()">Tasks</button></div>
+  	<h3> <strong>Manager: </strong><%= @user.user.name %> </h3><br>
+  	<h4> Employees managed by <%= @user.user.name %> :</h4>
+  	<table class="table">
+  	<thead>
+    	<tr>
+    		<th>Name</th>
+      	<th>Email</th>
+      	<th>ID</th>
+    	</tr>
+  	</thead>
+	  <tbody>
+		<%= for user <- @underlings do %>
+    	<tr>
+    	  <td><%= user.name %></td>
+    	  <td><%= user.email %></td>
+    	  <td><%= user.id %></td>
+    	</tr>
+		<% end %>
+  	</tbody>
+		</table>
+ 	</div>
+ 	<div id="hp2" class="hidden">
+ 		<div class="new"><button class="btn btn-secondary" onclick="hide_taskDiv()">Homepage</button></div>
+ 		<strong><h3>Tasks assigned to <%=@user.name%></h3></strong>
+ 		<%= Enum.map @tasks, fn task -> %>
+		<div class="row">
+  		<div class="col">
+    		<div class="card">
+      		<div class="card-body">
+        		<h5 class="card-title"><%= task.name %></h5>
+        			<span class="new"><button class="time_button btn btn-primary"
+        																data-task_id="<%=task.id%>"
+        																data-timeblock_id="<%=Tasktracker2.Work.get_half_timeblock_id(task.id)%>">
+        			Start Task</button></span>
+        			<p><%= task.desc %></p>
+        			<p><strong>
+    					<%= if(task.completed == true) do %>
+    						Task is completed.
+    					<% else %>
+    						Task is not yet completed.
+    					<% end %>
+    					</strong></p>  
+    					<span><%= link "Show Task", to: task_path(@conn, :show, task), class: "btn btn-default btn-xs" %></span>
+        			<span><%= link "Edit Task", to: task_path(@conn, :edit, task), class: "btn btn-default btn-xs" %></span>
+        			<span><%= link "Delete Task", to: task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      		</div>
+    		</div>
+  		</div>
+		</div>
+		<% end %>
+ 	</div>
+ 	
+ 	
+ 	<script>
+ 		function hide_pplDiv(){
+ 			document.getElementById("hp1").className = "hidden";
+ 			document.getElementById("hp2").className = "hp2";
+ 		}
+ 		function hide_taskDiv(){
+ 			document.getElementById("hp2").className = "hidden";
+ 			document.getElementById("hp1").className = "hp1";
+ 		}
+ 		function get_timeblock_id(task_id){
+ 			var id=5;
+ 			return id; 			
+ 		}
+ 		
+ 		window.time_path = "<%= time_block_path(@conn, :index)%>";
+ 	</script>
+ 
+<% end %>
+
+
+

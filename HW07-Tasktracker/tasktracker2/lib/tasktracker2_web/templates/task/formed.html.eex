@@ -1,0 +1,44 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <b> Task Name: </b>
+    <%= text_input f, :name %>
+    <%= error_tag f, :name %>
+  </div>
+
+  <div class="form-group">
+    <b> Task Description: </b>
+    <%= textarea f, :desc, class: "form-control" %>
+    <%= error_tag f, :desc %>
+  </div>
+  
+  <div class="form-group">
+    <b>Assigned To:</b>
+    <%= if @user.manager do %>
+    	<%= select f, :user_id, @u_list %>
+    	<%= link "View Employee List", to: user_path(@conn, :underlings), class: "btn btn-default btn-xs" %>
+    	<%= error_tag f, :user_id %>
+    <% else %>
+    	<%= @task.user.name %>
+   	<% end %>
+  </div>
+
+  <div class="form-group">
+    <b> Task Completed? </b>
+    <%= if(@task.completed == true) do %>
+    Task is completed.
+    <% else %>
+    <%= checkbox f, :completed%>
+    <%= error_tag f, :completed %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
