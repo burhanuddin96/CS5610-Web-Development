@@ -1,0 +1,8 @@
+/* This file is for your main application css. */
+
+@import "bootstrap";
+
+.logform {
+	float: right;
+	color: green !important;
+}
