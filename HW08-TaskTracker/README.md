@@ -9,12 +9,13 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+Application Functionalities:
 
-## Learn more
+    Create new users.
+    LogIn and LogOut functionalities provided with passwords.
+    User can create new tasks and edit existing ones.
+    User is given a choice to input number of hours and minutes spent on current task.
+    User can only input minutes in 15min increments.
+    User is redirected to his feed page after logging in successfully.
+    Task feed page is personalized for each user showing only the tasks that are assigned to the current user.
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
